@@ -6,8 +6,6 @@ from config import *
 app = Flask(__name__)
 translator = Translator(MODEL_PATH)
 
-app.config["DEBUG"] = True # turn off in prod
-
 @app.route('/', methods=["GET"])
 def health_check():
     """Confirms service is running"""
@@ -33,4 +31,4 @@ def get_prediction():
     translation = translator.translate(source, target, text)
     return jsonify({"output": translation})
 
-app.run()
+app.run(threaded=True)

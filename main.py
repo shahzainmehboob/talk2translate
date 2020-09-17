@@ -33,4 +33,4 @@ def get_prediction():
     translation = translator.translate(source, target, text)
     return jsonify({"output": translation})
 
-app.run(host="0.0.0.0")
+app.run()

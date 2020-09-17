@@ -4,6 +4,7 @@ from translate import Translator
 from config import *
 
 app = Flask(__name__)
+PORT = int(os.environ.get('PORT', 5000))
 translator = Translator(MODEL_PATH)
 
 @app.route('/', methods=["GET"])
@@ -31,4 +32,4 @@ def get_prediction():
     translation = translator.translate(source, target, text)
     return jsonify({"output": translation})
 
-app.run(threaded=True)
+app.run(threaded=True, port=PORT)

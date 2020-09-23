@@ -31,4 +31,6 @@ def get_prediction():
     translation = translator.translate(source, target, text)
     return jsonify({"output": translation})
 
-app.run(threaded=True)
+
+if __name__ == '__main__':
+    app.run(threaded=True)
